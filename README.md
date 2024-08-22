@@ -6,6 +6,7 @@ Stock Market App is a Django-based web application that provides real-time stock
 - User authentication (login, registration)
 - Watchlist management
 - Stock portfolio tracking
+  
 - Integration with TradingView charts
 - User-friendly UI with responsive design
 
