@@ -1,0 +1,36 @@
+
+
+
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Real-Time Stock Prices</h2>
+
+  <ul>
+    {% for stock in stocks %}
+      <li>{{ stock.name }}: ${{ stock.current_price }}</li>
+      <div id="tradingview-widget-{{ stock.symbol }}"></div>
+    {% endfor %}
+  </ul>
+
+  <!-- TradingView Widget -->
+  {% for stock in stocks %}
+    <script type="text/javascript">
+      new TradingView.widget({
+        "width": 980,
+        "height": 610,
+        "symbol": "NASDAQ:{{ stock.symbol }}",
+        "interval": "D",
+        "timezone": "Etc/UTC",
+        "theme": "light",
+        "style": "1",
+        "locale": "en",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview-widget-{{ stock.symbol }}"
+      });
+    </script>
+  {% endfor %}
+{% endblock %}
+
